@@ -3,5 +3,5 @@ st.set_page_config(
     page_title="Yagimapping-kaheetonaa",
     page_icon="🌪️",
 )
-st.write("# Yagimapping 🌪️")
+st.write("# Yagimapping Việt Nam 🌪️")
 

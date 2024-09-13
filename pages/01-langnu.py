@@ -4,7 +4,7 @@ import geopandas as gpd
 
 st.set_page_config(
     page_title='Mapping Làng Nủ',
-    page_icon='🛖 ',
+    page_icon='🛖',
     layout='wide',
     initial_sidebar_state='collapsed'
 )

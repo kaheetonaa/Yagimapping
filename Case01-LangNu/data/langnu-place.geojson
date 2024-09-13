@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "langnu-place",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "full_id": "n12170887237", "osm_id": "12170887237", "osm_type": "node", "place": "locality", "source:website": "https://nongnghiep.vn/vu-sat-lo-lang-nu-46-nguoi-da-an-toan-77-nguoi-con-mat-tich-d399484.html", "name": "Làng Nủ", "image": "https://i.imgur.com/VBq49b2.jpeg", "damage:type": "landslide", "damage:event": "#Yagi2024", "damage:date": "2024-09-10" }, "geometry": { "type": "Point", "coordinates": [ 104.5338248, 22.1464327 ] } },
+{ "type": "Feature", "properties": { "full_id": "n12171365749", "osm_id": "12171365749", "osm_type": "node", "place": "locality", "source:website": null, "name": "Bản 1, Làng Nủ", "image": null, "damage:type": null, "damage:event": null, "damage:date": null }, "geometry": { "type": "Point", "coordinates": [ 104.5288327, 22.1507166 ] } },
+{ "type": "Feature", "properties": { "full_id": "n12171365750", "osm_id": "12171365750", "osm_type": "node", "place": "locality", "source:website": null, "name": "Bản 2, Làng Nủ", "image": null, "damage:type": null, "damage:event": null, "damage:date": null }, "geometry": { "type": "Point", "coordinates": [ 104.5363923, 22.1428516 ] } }
+]
+}

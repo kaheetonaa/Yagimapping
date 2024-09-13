@@ -2,3 +2,4 @@ streamlit
 leafmap
 geopandas
 mapclassify
+setuptools

@@ -14,6 +14,7 @@
 <script src="./threejs/three.min.js"></script>
 <script src="./threejs/OrbitControls.js"></script>
 <script src="./threejs/ViewHelper.js"></script>
+<script src="./tweenjs/tween.js"></script>
 <script src="./Qgis2threejs.js"></script>
 <script src="./meshline/THREE.MeshLine.js"></script>
 </head>
@@ -107,15 +108,18 @@
 <!-- animation -->
 <div id="narrativebox" class="ef1">
   <div id="narbody">
-
+    <div id="nar_25ee4de3" class="narcontent">
+      <img src="https://raw.githubusercontent.com/kaheetonaa/Yagimapping/main/Case01-LangNu/3d-map-2-0/img/ksat-01.jpeg" height="200px">
+    </div>
   </div>
   <div id="nextbtn"></div>
 </div>
 
 <script>
 Q3D.Config.allVisible = true;
-Q3D.Config.viewpoint = {lookAt:{x:11636433.428646244,y:2529122.689723569,z:1137.784668614109},pos:{x:11636433.428646244,y:2534592.8648181236,z:1137.7846686141095}};
+Q3D.Config.viewpoint = {lookAt:{x:11636286.046864508,y:2527936.9161471217,z:284.1653694001963},pos:{x:11636286.046864508,y:2534276.0466554426,z:1006.4180599692766}};
 Q3D.Config.localMode = true;
+Q3D.Config.animation.enabled = true;
 
 var container = document.getElementById("view"),
     app = Q3D.application,

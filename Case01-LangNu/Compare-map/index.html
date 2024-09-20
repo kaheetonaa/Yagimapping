@@ -38,9 +38,47 @@
 
         .map {
             position: absolute;
-            top: 15pt;
-            bottom: 0pt;
+            top: 0;
+            bottom: 0;
             width: 100%;
+            z-index: 1;
+        }
+
+        #title {
+            position: absolute;
+            /* Sit on top of the page content */
+            top: 20px;
+            left: 20px;
+            /* Black background with opacity */
+            z-index: 2;
+            color:white;
+        }
+        #time1 {
+            position: absolute;
+            /* Sit on top of the page content */
+            top: 60px;
+            right: 20px;
+            /* Black background with opacity */
+            z-index: 2;
+            color:white;
+        }
+        #time2 {
+            position: absolute;
+            /* Sit on top of the page content */
+            bottom: 80px;
+            right: 20px;
+            /* Black background with opacity */
+            z-index: 2;
+            color:white;
+        }
+        #attribution {
+            position: absolute;
+            /* Sit on top of the page content */
+            bottom: 20px;
+            left: 20px;
+            /* Black background with opacity */
+            z-index: 2;
+            color:white;
         }
     </style>
     <script
@@ -48,13 +86,16 @@
     <link rel="stylesheet"
         href="https://rawcdn.githack.com/astridx/astridx.github.io/a9d7297a4fe1e3a4d7ebeb1e4e662fd1339ef3b5/maplibreexamples/plugins/maplibre-gl-compare.css"
         type="text/css" />
-        <b>Compare between 19/09/2024(after-upper) and 12/04/2024(before-belower)</b>
+    <div id="title"><b>Compare between 19/09/2024(after-upper) and 12/04/2024(before-belower)</b></div>
+    <div id="time1"><b>19/09/2024</b></div>
+    <div id="time2"><b>12/04/2024</b></div>
+    <div id="attribution"><i>Sentinel-2A satellite, under a Creative Commons BY-SA license<br>Google Research - Open Buildings(Quang Huy NGUYEN-2024)</i></div>
     <div id="comparison-container">
-        
+
         <div id="before" class="map"></div>
         <div id="after" class="map"></div>
     </div>
-    
+
     <script>
         // https://cloud.maptiler.com/maps/
         var beforeMap = new maplibregl.Map({
@@ -85,7 +126,8 @@
                 ]
             },
             center: [104.52751, 22.15154], // 22.15154, 104.52751
-            zoom: 15 // starting zoom
+            zoom: 15, // starting zoom
+            attributionControl: false
         });
 
         function addBuildings(a) {
@@ -99,13 +141,13 @@
                 paint: {
                     'fill-color': 'white',
                     'fill-opacity': .5,
-                    'fill-outline-color':'white'
+                    'fill-outline-color': 'white'
                 }
 
             });
         }
 
-        beforeMap.on('load', ()=> addBuildings(beforeMap))
+        beforeMap.on('load', () => addBuildings(beforeMap))
 
         var afterMap = new maplibregl.Map({
             container: 'after', // container id
@@ -135,10 +177,11 @@
                 ]
             },
             center: [104.52751, 22.15154], // starting position
-            zoom: 15 // starting zoom
+            zoom: 15, // starting zoom
+            attributionControl: false
         });
 
-        afterMap.on('load', ()=> addBuildings(afterMap))
+        afterMap.on('load', () => addBuildings(afterMap))
 
         afterMap.dragRotate.disable();
 

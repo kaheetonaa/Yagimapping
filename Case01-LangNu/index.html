@@ -1,11 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="utf-8" />
+    <title>Swipe between maps</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://unpkg.com/maplibre-gl@4.7.0/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@4.7.0/dist/maplibre-gl.css" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
+
 <body>
-  
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        body * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <script
+        src="https://rawcdn.githack.com/astridx/astridx.github.io/a9d7297a4fe1e3a4d7ebeb1e4e662fd1339ef3b5/maplibreexamples/plugins/maplibre-gl-compare.js"></script>
+    <link rel="stylesheet"
+        href="https://rawcdn.githack.com/astridx/astridx.github.io/a9d7297a4fe1e3a4d7ebeb1e4e662fd1339ef3b5/maplibreexamples/plugins/maplibre-gl-compare.css"
+        type="text/css" />
+    <div id="comparison-container">
+        <div id="before" class="map"></div>
+        <div id="after" class="map"></div>
+    </div>
+    <script>
+        // https://cloud.maptiler.com/maps/
+        var beforeMap = new maplibregl.Map({
+            container: 'before', // container id
+            style: {
+                'version': 8,
+                'sources': {
+                    'raster-tiles': {
+                        'type': 'raster',
+                        'tiles': [
+                            // NOTE: Layers from Stadia Maps do not require an API key for localhost development or most production
+                            // web deployments. See https://docs.stadiamaps.com/authentication/ for details.
+                            'https://titiler.xyz/stac/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?rescale=0%2C3000&url=https%3A%2F%2Fearth-search.aws.element84.com%2Fv1%2Fcollections%2Fsentinel-2-l2a%2Fitems%2FS2B_48QVK_20240919_0_L2A&item=S2B_48QVK_20240919_0_L2A&assets=red&assets=green&assets=blue'
+                        ],
+                        'tileSize': 256,
+                        'attribution':
+                            'osm'
+                    }
+                },
+                'layers': [
+                    {
+                        'id': 'simple-tiles',
+                        'type': 'raster',
+                        'source': 'raster-tiles',
+                        'minzoom': 0,
+                        'maxzoom': 22
+                    }
+                ]
+            },
+            center: [104.52751, 22.15154], // 22.15154, 104.52751
+            zoom: 15 // starting zoom
+        });
+
+        function addBuildings(a) {
+            a.addLayer({
+                id: 'buildings',
+                type: 'fill',
+                source: {
+                    type: 'geojson',
+                    data: 'https://raw.githubusercontent.com/kaheetonaa/Yagimapping/refs/heads/main/Case01-LangNu/data/langnu-googleopenbuildings-2.geojson'
+                },
+                paint: {
+                    'fill-color': 'red',
+                    'fill-opacity': .3,
+                }
+
+            });
+        }
+
+        beforeMap.on('load', ()=> addBuildings(beforeMap))
+
+        var afterMap = new maplibregl.Map({
+            container: 'after', // container id
+            style: {
+                'version': 8,
+                'sources': {
+                    'raster-tiles': {
+                        'type': 'raster',
+                        'tiles': [
+                            // NOTE: Layers from Stadia Maps do not require an API key for localhost development or most production
+                            // web deployments. See https://docs.stadiamaps.com/authentication/ for details.
+                            'https://titiler.xyz/stac/tiles/WebMercatorQuad/{z}/{x}/{y}@1x?rescale=0%2C3000&url=https%3A%2F%2Fearth-search.aws.element84.com%2Fv1%2Fcollections%2Fsentinel-2-l2a%2Fitems%2FS2B_48QVK_20240212_0_L2A&item=S2B_48QVK_20240212_0_L2A&assets=red&assets=green&assets=blue'//S2B_48QVK_20230925_0_L2A
+                        ],
+                        'tileSize': 256,
+                        'attribution':
+                            'osm'
+                    }
+                },
+                'layers': [
+                    {
+                        'id': 'simple-tiles',
+                        'type': 'raster',
+                        'source': 'raster-tiles',
+                        'minzoom': 0,
+                        'maxzoom': 22
+                    }
+                ]
+            },
+            center: [104.52751, 22.15154], // starting position
+            zoom: 15 // starting zoom
+        });
+
+        afterMap.on('load', ()=> addBuildings(afterMap))
+
+        afterMap.dragRotate.disable();
+
+        // disable map rotation using keyboard
+        afterMap.keyboard.disable();
+
+        // disable map rotation using touch rotation gesture
+        afterMap.touchZoomRotate.disableRotation();
+
+        beforeMap.dragRotate.disable();
+
+        // disable map rotation using keyboard
+        beforeMap.keyboard.disable();
+
+
+
+        var container = "#comparison-container";
+
+        var map = new maplibregl.Compare(beforeMap, afterMap, container, {
+            // Set this to enable comparing two maps by mouse movement:
+            mousemove: true,
+            orientation: 'horizontal'
+        });
+        // disable map rotation using right click + drag
+
+    </script>
 </body>
+
 </html>

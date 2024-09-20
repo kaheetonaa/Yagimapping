@@ -38,8 +38,8 @@
 
         .map {
             position: absolute;
-            top: 0;
-            bottom: 0;
+            top: 15pt;
+            bottom: 0pt;
             width: 100%;
         }
     </style>
@@ -48,10 +48,13 @@
     <link rel="stylesheet"
         href="https://rawcdn.githack.com/astridx/astridx.github.io/a9d7297a4fe1e3a4d7ebeb1e4e662fd1339ef3b5/maplibreexamples/plugins/maplibre-gl-compare.css"
         type="text/css" />
+        <b>Compare between 12/04/2024 and 19/09/2024</b>
     <div id="comparison-container">
+        
         <div id="before" class="map"></div>
         <div id="after" class="map"></div>
     </div>
+    
     <script>
         // https://cloud.maptiler.com/maps/
         var beforeMap = new maplibregl.Map({
@@ -68,7 +71,7 @@
                         ],
                         'tileSize': 256,
                         'attribution':
-                            'osm'
+                            'Sentinel-2A satellite, under a Creative Commons BY-SA license|Google Research - Open Buildings'
                     }
                 },
                 'layers': [
@@ -94,8 +97,9 @@
                     data: 'https://raw.githubusercontent.com/kaheetonaa/Yagimapping/refs/heads/main/Case01-LangNu/data/langnu-googleopenbuildings-2.geojson'
                 },
                 paint: {
-                    'fill-color': 'red',
-                    'fill-opacity': .3,
+                    'fill-color': 'white',
+                    'fill-opacity': .5,
+                    'fill-outline-color':'white'
                 }
 
             });
@@ -117,7 +121,7 @@
                         ],
                         'tileSize': 256,
                         'attribution':
-                            'osm'
+                            'Sentinel-2A satellite, under a Creative Commons BY-SA license|Google Research - Open Buildings'
                     }
                 },
                 'layers': [

@@ -41,7 +41,7 @@
             top: 0;
             bottom: 0;
             width: 100%;
-            z-index: 1;
+            
         }
 
         #title {
@@ -50,25 +50,27 @@
             top: 20px;
             left: 20px;
             /* Black background with opacity */
-            z-index: 2;
+            z-index: 3;
             color:white;
         }
         #time1 {
+            font:14px Helvetica Neue;
             position: absolute;
             /* Sit on top of the page content */
-            top: 60px;
+            top: 20px;
             right: 20px;
             /* Black background with opacity */
-            z-index: 2;
+            z-index: 1;
             color:white;
         }
         #time2 {
+            font:14px Helvetica Neue;
             position: absolute;
             /* Sit on top of the page content */
-            bottom: 80px;
+            bottom: 20px;
             right: 20px;
             /* Black background with opacity */
-            z-index: 2;
+            z-index: 3;
             color:white;
         }
         #attribution {
@@ -77,7 +79,7 @@
             bottom: 20px;
             left: 20px;
             /* Black background with opacity */
-            z-index: 2;
+            z-index: 3;
             color:white;
         }
     </style>
@@ -87,13 +89,14 @@
         href="https://rawcdn.githack.com/astridx/astridx.github.io/a9d7297a4fe1e3a4d7ebeb1e4e662fd1339ef3b5/maplibreexamples/plugins/maplibre-gl-compare.css"
         type="text/css" />
     <div id="title"><b>Compare between 19/09/2024(after-upper) and 12/04/2024(before-belower)</b></div>
-    <div id="time1"><b>19/09/2024</b></div>
-    <div id="time2"><b>12/04/2024</b></div>
+    
+    
     <div id="attribution"><i>Sentinel-2A satellite, under a Creative Commons BY-SA license<br>Google Research - Open Buildings(Quang Huy NGUYEN-2024)</i></div>
     <div id="comparison-container">
-
-        <div id="before" class="map"></div>
-        <div id="after" class="map"></div>
+        
+        
+        <div id="before" class="map" ><div id="time1"><b>19/09/2024</b></div></div>
+        <div id="after" class="map" ><div id="time2"><b>12/04/2024</b></div></div>
     </div>
 
     <script>
